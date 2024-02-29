@@ -2,7 +2,7 @@
 # check if length of majority element is greater than lenght of array
 # time complexity is 0(n log n) becz majority has time complexity of 0(n log n) compared to loop o(n)
 
-
+# my approach
 def isMajority(arr):
     arr.sort() # this has time complexity of o(n log n)
     li =[]
@@ -21,3 +21,13 @@ def isMajority(arr):
 arr = [1, 2, 3, 3, 3, 10]
 value = isMajority(arr)
 print(value)
+
+# better approach
+def isMajority(arr):
+    candidate,count = None,0
+    for num in arr:
+        if count == 0:
+            candidate = num
+        count += 1 if num == candidate else -1
+        
+    return arr.count(candidate) > len(arr)/2
